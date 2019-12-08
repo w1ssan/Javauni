@@ -50,6 +50,7 @@ public class navneListe {
 
   	String utTxt = "filbehandling ferdig, OK!";
   	showMessageDialog(null, utTxt);
-    out.print(antnavn);
+
+
   }
 }
