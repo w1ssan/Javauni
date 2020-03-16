@@ -1,0 +1,48 @@
+package hellofx;
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.geometry.*;
+
+public class ConfirmBox {
+	
+	static boolean answer;
+	
+	public static boolean display(String title, String message) {
+		
+		Stage window = new Stage();
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.setTitle(title);
+		window.setMinWidth(250);
+		
+		//setting message to the label and a close button
+		Label label = new Label();
+		label.setText(message);
+		
+		Button yesbutton = new Button("Yes");
+		yesbutton.setOnAction(e ->{
+			answer = true;
+			window.close();
+		});
+		
+		Button nobutton = new Button("No");
+		nobutton.setOnAction(e ->{
+			answer = false;
+			window.close();
+		});
+		
+		//simple scene
+		VBox layout = new VBox(10);
+		layout.getChildren().addAll(label, yesbutton, nobutton);
+		layout.setAlignment(Pos.CENTER);
+		
+		Scene scene = new Scene(layout);
+		window.setScene(scene);
+		//displays the window and before you can go back you have to close it
+		window.showAndWait();
+		
+		return answer;
+		//
+	}
+}
