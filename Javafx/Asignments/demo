@@ -1,0 +1,26 @@
+package hellofx;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+public class demo extends Application {
+
+    public void start(Stage primaryStage) {
+
+        Label label1 = new Label("Hello World"); 
+        
+        StackPane root = new StackPane(); // opprett layout
+        root.getChildren().add(label1); // legg tekst-komponent inn i layout
+        
+        Scene scene = new Scene(root,100,100); // opprett en scene med layout
+        primaryStage.setScene(scene); // knytt scenen til stage(vindu)
+        primaryStage.show(); // vis 
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+}
