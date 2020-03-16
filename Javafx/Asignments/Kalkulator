@@ -1,0 +1,76 @@
+package hellofx;
+
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+public class Kalkulator extends Application {
+
+    public void start(Stage primaryStage) {
+    	
+        Label label1 = new Label("Number 1");
+        TextField nr1 = new TextField();
+        Label label2 = new Label("Number 2");
+        TextField nr2 = new TextField();
+        Button add = new Button("+");
+        
+        Button min = new Button("-");
+        Button gang = new Button("x");
+        Button div = new Button("/");
+        Label label3 = new Label("Resultat:");
+        TextField res = new TextField();
+        
+        
+        FlowPane root = new FlowPane(); // opprett layout
+        root.setPadding(new Insets(10, 10, 10, 10));       
+        root.getChildren().add(label1);// legg tekst-komponent inn i layout
+        root.getChildren().add(nr1);
+        root.getChildren().add(label2);
+        root.getChildren().add(nr2);
+        root.getChildren().add(add);// legg tekst-komponent inn i layout
+        root.getChildren().add(min);
+        root.getChildren().add(gang);
+        root.getChildren().add(div);
+        root.getChildren().add(label3);
+        root.getChildren().add(res);
+        
+        
+        Scene scene = new Scene(root,100,200); // opprett en scene med layout
+        primaryStage.setScene(scene); // knytt scenen til stage(vindu)
+        primaryStage.show(); // vis 
+        
+        add.setOnAction(event ->{
+        	double a = Double.parseDouble(nr1.getText());
+        	double b = Double.parseDouble(nr2.getText());
+        	double resultat = a+b;
+        	res.setText("resultat: " + resultat);
+        });
+        min.setOnAction(event ->{
+        	double a = Double.parseDouble(nr1.getText());
+        	double b = Double.parseDouble(nr2.getText());
+        	double resultat = a-b;
+        	res.setText("resultat: " + resultat);
+        });
+        gang.setOnAction(event ->{
+        	double a = Double.parseDouble(nr1.getText());
+        	double b = Double.parseDouble(nr2.getText());
+        	double resultat = a*b;
+        	res.setText("resultat: " + resultat);
+        });
+        div.setOnAction(event ->{
+        	double a = Double.parseDouble(nr1.getText());
+        	double b = Double.parseDouble(nr2.getText());
+        	double resultat = a/b;
+        	res.setText("resultat: " + resultat);
+        });
+        
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+}
