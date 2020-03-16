@@ -1,0 +1,63 @@
+package hellofx;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField; 
+
+public class Innlogging extends Application {
+ 
+  // start-metoden kjøres automatisk av JavaFx
+  public void start(Stage vindu) {
+	  
+	// oppretter panel for å holde på komponentene
+	// brukere en VBox (Vertical Box) som legger komponentene under hverandre
+    VBox panel = new VBox(); 
+    // setter på litt luft rundt komponentene
+    panel.setPadding(new Insets(10, 50, 50, 50));
+    panel.setSpacing(10);
+    
+    // oppretter gui-komponenter
+    Label lblBrukernavn = new Label("Brukernavn:");
+    TextField txtBrukernavn = new TextField();
+    
+    Label lblPassord = new Label("Passord:");
+    PasswordField txtPassord = new PasswordField();
+    
+    Button btnLogginn = new Button("Logg inn");
+    Label txttest = new Label();
+    txttest.setText("hello");
+    // legger til komponentene i panelet
+    panel.getChildren().add(lblBrukernavn);
+    panel.getChildren().add(txtBrukernavn);
+    panel.getChildren().add(lblPassord);
+    panel.getChildren().add(txtPassord);
+    panel.getChildren().add(btnLogginn);
+    panel.getChildren().add(txttest);
+    
+    // alternativ måte å legge til flere komponenter på en gang
+    //panel.getChildren().addAll(lblBrukernavn, txtBrukernavn, lblPassord, txtPassord, btnLogginn);
+    
+    // oppretter en scene, legger inn panel
+    Scene scene = new Scene(panel, 250, 200);
+   
+    // tilordner scenen til programvinduet
+    vindu.setScene(scene);
+    
+    // tittelen på programvinduet
+    vindu.setTitle("Innlogging");
+    
+    // viser vinduet
+    vindu.show(); 
+  }
+
+  public static void main(String[] args) {
+	// starter JavaFX
+    launch(args);
+  }
+}
