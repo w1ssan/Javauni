@@ -1,0 +1,59 @@
+package hellofx;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
+import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class AlternativeUserEvent extends Application{ 
+	
+	Button button;
+	Button button2;
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	@Override
+	public void start(Stage primaryStage)throws Exception {
+		//declaring the name of the window
+		primaryStage.setTitle("Title of the window");
+		//declaring the button inside the window
+		button = new Button();
+		button2 = new Button();
+		//declaring the text on the button inside the window
+		button.setText("Click Me tooooo");
+		button2.setText("Click Me Too");
+		
+		//this is an anonymous inner class allowing us to call this handle this is non lambda
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("button 1 clicked .....");
+			}
+		});
+		//this is the lambda way super easy ! one line of code can go on the same line
+		button2.setOnAction(e-> System.out.println("button 2 clicked....."));
+		
+		//this one will override the previous ! multiple lines of code can go on multiple lines like this
+				button2.setOnAction(e-> {
+					System.out.println("button 2 clicked.....");
+					System.out.println("button 3 clicked.....");
+					});
+		
+		//declaring the layout of the window
+		StackPane layout = new StackPane();
+		//adding the button to the layout of the window
+		layout.getChildren().add(button);
+		layout.getChildren().add(button2);
+		
+		
+		//setting the scene with layout / windowsize 
+		Scene scene = new Scene(layout,300,250);
+		//setting the scene to the window
+		primaryStage.setScene(scene);
+		//show the scene
+		primaryStage.show();
+	}
+}
